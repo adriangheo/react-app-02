@@ -10,20 +10,10 @@ function Home(props) {
       <Layout>
         <div className="container">
           <div className="row">
-            <div className="col">
-              <HomeCategory />
-            </div>
-            <div className="col">
-              <HomeCategory />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col">
-              <HomeCategory />
-            </div>
-            <div className="col">
-              <HomeCategory />
-            </div>
+            <HomeCategory />
+            <HomeCategory />
+            <HomeCategory />
+            <HomeCategory />
           </div>
         </div>
       </Layout>

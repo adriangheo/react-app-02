@@ -2,7 +2,7 @@ import React from 'react'
 
 function HomeCategory() {
   return (
-    <div>
+    <div className="col-6">
         <h1>
             HomeCategory
         </h1>
