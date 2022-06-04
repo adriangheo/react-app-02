@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import About from "./pages/About";
 import Page404 from "./pages/Page404";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 class App extends React.Component {
   constructor() {
@@ -15,6 +17,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <Header />
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/login" exact component={Login} />
@@ -22,6 +25,7 @@ class App extends React.Component {
 
           <Route path="*" component={Page404} />
         </Switch>
+        <Footer />
       </div>
     );
   }
