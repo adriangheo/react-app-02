@@ -2,6 +2,10 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home'
+import Login from './pages/Login';
+import About from './pages/About';
+import Page404 from './pages/Page404';
+
 
 class App extends React.Component{
   constructor(){
@@ -13,7 +17,7 @@ class App extends React.Component{
     return(
       <div>
         React App 02
-        <Home/>
+        <Route path='/' exact component={Home} />
       </div>
     )
   }
