@@ -2,6 +2,8 @@ import React from "react";
 import Layout from "../components/Layout";
 
 function Home() {
+  console.log(props);
+
   return (
     <div>
       <Layout>
