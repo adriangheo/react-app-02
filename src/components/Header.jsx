@@ -1,11 +1,14 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import logo from '../assets/images/logo.png'
 
 function Header() {
   return (
     <div>
-        <Link to="/">Home </Link>
-        <Link to="/login">Login </Link>
+        <Link to='/' >
+          <img src={logo} alt="logo" />
+        </Link> &nbsp;
+        <Link to='/login'>Login</Link>
     </div>
   )
 }
