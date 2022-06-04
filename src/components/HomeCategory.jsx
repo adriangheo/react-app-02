@@ -11,9 +11,6 @@ function HomeCategory(props) {
             alt='' />
         <h2>{title}</h2>
         <p>{description}</p>
-        <h1>
-            HomeCategory
-        </h1>
     </div>
   )
 }

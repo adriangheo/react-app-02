@@ -1,28 +1,41 @@
-import React from "react";
-import HomeCategory from "../components/HomeCategory";
-import Layout from "../components/Layout";
+import React from 'react'
+import Layout from '../components/Layout'
+import HomeCategory from '../components/HomeCategory';
+import products from '../utils/products.json'; 
 
 class Home extends React.Component {
   constructor(){
     super();
-    this.state = {}
+    this.state = {
+      categories: []
+    }
+  }
+
+  componentDidMount(){
+    const categories = Object.values(products);
+    this.setState({categories})
   }
 
   render(){
+    console.log(this.state.categories)
     return (
       <div>
         <Layout>
         
           <div className="container">
             <div className="row">
-              <HomeCategory
-                image="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-running-shoes-lead-1576249557.jpg"
-                title="Pantofi"
-                descrition="Cei mai tari pantofi"
-              />
-              <HomeCategory/>
-              <HomeCategory/>
-              <HomeCategory/>
+              {
+                this.state.categories.map((category, index)=> {
+                  return(
+                    <HomeCategory
+                      key={index}
+                      image={category.image}
+                      title={category.name}
+                      description={category.description}               
+                    />
+                  );
+                })
+              }
             </div>
           </div>
         </Layout> 
@@ -32,5 +45,4 @@ class Home extends React.Component {
 
 }
 
-
-export default Home;
+export default Home
