@@ -1,13 +1,31 @@
 import React from "react";
+import HomeCategory from "../components/HomeCategory";
 import Layout from "../components/Layout";
 
-function Home() {
+function Home(props) {
   console.log(props);
 
   return (
     <div>
       <Layout>
-        <h1>Home</h1>
+        <div className="container">
+          <div className="row">
+            <div className="col">
+              <HomeCategory />
+            </div>
+            <div className="col">
+              <HomeCategory />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col">
+              <HomeCategory />
+            </div>
+            <div className="col">
+              <HomeCategory />
+            </div>
+          </div>
+        </div>
       </Layout>
     </div>
   );
