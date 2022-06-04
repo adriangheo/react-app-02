@@ -1,6 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
+import Home from './pages/Home'
 
 class App extends React.Component{
   constructor(){
@@ -12,6 +13,7 @@ class App extends React.Component{
     return(
       <div>
         React App 02
+        <Home/>
       </div>
     )
   }
