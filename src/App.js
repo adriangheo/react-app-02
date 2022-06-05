@@ -6,7 +6,21 @@ import Login from './pages/Login.jsx';
 import About from './pages/About.jsx';
 import Page404 from './pages/Page404.jsx';
 import Category from './pages/Category';
+// firebase imports
+import withFirebaseAuth from 'react-with-firebase-auth'
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import firebaseConfig from './configs/firebase';
 
+
+
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+
+const firebaseAppAuth = firebaseApp.auth();
+
+const providers = {
+  googleProvider: new firebase.auth.GoogleAuthProvider(),
+};
 
 class App extends React.Component{
   constructor(){
@@ -15,6 +29,8 @@ class App extends React.Component{
   }
 
   render(){
+    console.log(this.props);
+
     return(
       <div>
         <Switch>
@@ -30,4 +46,7 @@ class App extends React.Component{
   }
 }
 
-export default App;
+export default withFirebaseAuth({
+  providers,
+  firebaseAppAuth,
+})(App);
