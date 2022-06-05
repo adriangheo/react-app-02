@@ -7,12 +7,15 @@ import { ReactComponent as ShoppingCart } from '../assets/icons/shopping-cart.sv
 
 function Header() {
   return (
-    <div className='header'>
-        <Link to='/' >
+    <div className='header d-flex justify-content-between align-items-center container'>
+        <Link to='/'>
           <img src={logo} alt="logo" />
-        </Link> &nbsp;
-        <Link to='/login'>Login</Link>
-        <ShoppingCart />
+        </Link>
+        <div>
+          <Link to='/login'>Login</Link>
+          <ShoppingCart />
+        </div>
+        
     </div>
   )
 }
