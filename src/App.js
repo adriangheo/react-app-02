@@ -21,7 +21,7 @@ class App extends React.Component{
           <Route path='/' exact component={Home} />
           <Route path='/login' exact component={Login} />
           <Route path='/about' exact component={About} />
-          <Route path='/category' exact component={Category}/>
+          <Route path='/category/:categoryName' exact component={Category}/>
 
           <Route path='*' component={Page404} />
         </Switch>

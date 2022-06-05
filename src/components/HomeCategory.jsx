@@ -2,11 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 function HomeCategory(props) {
-  const {image, title, description} = props;
+  const {image, title, description, routeName} = props;
 
+  console.log(routeName);
   return (
     <div className="col-6">
-      <Link to='/category'>
+      <Link to={`/category/${routeName}`}>
         <img 
               className='w-100 mb-2'
               src={image} 

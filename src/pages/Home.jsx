@@ -7,17 +7,23 @@ class Home extends React.Component {
   constructor(){
     super();
     this.state = {
-      categories: []
+      categories: [],
+      categoryNames: []
     }
   }
 
   componentDidMount(){
     const categories = Object.values(products);
-    this.setState({categories})
+    const categoryNames = Object.keys(products);
+    this.setState({
+      categories: categories,
+      categoryNames: categoryNames,
+    });
+
   }
 
   render(){
-    console.log(this.state.categories)
+    console.log(this.state)
     return (
       <div>
         <Layout>
@@ -31,7 +37,8 @@ class Home extends React.Component {
                       key={index}
                       image={category.image}
                       title={category.name}
-                      description={category.description}               
+                      description={category.description}
+                      routeName={this.state.categoryNames[index]}          
                     />
                   );
                 })
