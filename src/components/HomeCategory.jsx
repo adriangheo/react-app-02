@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function HomeCategory(props) {
   const {image, title, description, routeName} = props;
 
-  console.log(routeName);
+  // console.log(routeName);
   return (
     <div className="col-6">
       <Link to={`/category/${routeName}`}>

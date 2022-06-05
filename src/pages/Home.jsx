@@ -23,11 +23,10 @@ class Home extends React.Component {
   }
 
   render(){
-    console.log(this.state)
+    // console.log(this.state)
     return (
       <div>
         <Layout>
-        
           <div className="container">
             <div className="row">
               {
