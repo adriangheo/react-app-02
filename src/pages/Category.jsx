@@ -4,10 +4,13 @@ import Layout from '../components/Layout'
 
 export class Category extends Component {
   render() {
+    console.log(this.props);
+    const routeParam = this.props.match.params.categoryName;
+
     return (
       <div>
       <Layout>
-          <h1>Category page</h1>
+          <h1>{routeParam}</h1>
       </Layout>
   </div>
     )
