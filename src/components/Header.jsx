@@ -4,11 +4,11 @@ import logo from '../assets/images/logo.png'
 import './Header.css'
 import { ReactComponent as ShoppingCart } from '../assets/icons/shopping-cart.svg';
 import userEvent from '@testing-library/user-event';
-
+import { connect } from 'react-redux';
 
 function Header(props) {
   // console.log(props);
-  const {signOut, user} = props;
+  const {signOut, user, numberOfProducts} = props;
 
   return (
     
@@ -26,10 +26,17 @@ function Header(props) {
                 : <Link to='/login'>Login</Link>
           }
           <ShoppingCart />
+          <p>{ numberOfProducts }</p>
         </div>
         
     </div>
   )
 }
 
-export default Header
+function mapStateToProps(state){
+  return {
+    numberOfProducts: state.products.length
+  }
+}
+
+export default connect (mapStateToProps)(Header);
