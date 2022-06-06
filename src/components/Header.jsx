@@ -7,7 +7,7 @@ import userEvent from '@testing-library/user-event';
 
 
 function Header(props) {
-  console.log(props);
+  // console.log(props);
   const {signOut, user} = props;
 
   return (
