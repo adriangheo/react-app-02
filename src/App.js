@@ -29,13 +29,40 @@ class App extends React.Component{
   }
 
   render(){
-    console.log(this.props);
+    const {
+      user,
+      signOut,
+      signInWithGoogle,
+    } = this.props;
+    // console.lo usg(user);
 
     return(
       <div>
+        <div>
+          {/* <header className="App-header" style={{"min-height": "unset"}}>
+            {
+              user 
+                ? <p>Hello, {user.displayName}</p>
+                : <p>Please sign in.</p>
+            }
+            {
+              user
+                ? <button onClick={signOut}>Sign out</button>
+                : <button onClick={signInWithGoogle}>Sign in with Google</button>
+            }
+          </header> */}
+        </div>
         <Switch>
-          <Route path='/' exact component={Home} />
-          <Route path='/login' exact component={Login} />
+          <Route
+            exact
+            path="/login"
+            render={(props) => <Login {...props} signInWithGoogle={signInWithGoogle} />}
+          />
+           <Route 
+            exact
+            path='/'  
+            render={(props) => <Home {...props} signOut={signOut} user={user}/>}
+          />
           <Route path='/about' exact component={About} />
           <Route path='/category/:categoryName' exact component={Category}/>
 
