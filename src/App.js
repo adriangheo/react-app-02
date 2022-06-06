@@ -66,7 +66,7 @@ class App extends React.Component{
           />
           <Route path='/about' exact component={About} />
           <Route path='/category/:categoryName' exact component={Category}/>
-          <Route  path='/cart' exact component={Cart}/>
+          <Route exact path='/cart' component={Cart}/>
           <Route path='*' component={Page404} />
         </Switch>
       </div>
