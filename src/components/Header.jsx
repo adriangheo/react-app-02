@@ -19,7 +19,10 @@ function Header(props) {
         <div>
           {
             user
-                ? <p>{user.displayName}</p>
+                ? <div>
+                  <p>{user.displayName}</p>
+                  <button onClick={signOut}>Delogare</button>
+                  </div>
                 : <Link to='/login'>Login</Link>
           }
           <ShoppingCart />
