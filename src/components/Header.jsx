@@ -25,7 +25,9 @@ function Header(props) {
                   </div>
                 : <Link to='/login'>Login</Link>
           }
-          <ShoppingCart />
+          <Link to='/cart'>
+            <ShoppingCart className='ml-2'/>
+          </Link>
           <p>{ numberOfProducts }</p>
         </div>
         
