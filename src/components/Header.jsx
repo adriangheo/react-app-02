@@ -42,7 +42,7 @@ function Header(props) {
 
 function mapStateToProps(state) {
   return {
-    numberOfProducts: state.products.length,
+    numberOfProducts: state.cart.products.length,
   };
 }
 
