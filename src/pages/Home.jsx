@@ -23,14 +23,9 @@ class Home extends React.Component {
   }
 
   render(){
-    // console.log(this.state)
-    // console.log(this.props);
-    const {signOut, user} = this.props;
-
     return (
       <div>
-        <Layout signOut={signOut} user={user}>
-        
+        <Layout>
           <div className="container">
             <div className="row">
               {

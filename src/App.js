@@ -27,17 +27,11 @@ class App extends React.Component{
       <div>
 
         <Switch>
-          <Route
-            exact
-            path="/login"
-            render={(props) => <Login 
-              {...props}
-            />}
-          />
-           <Route 
+          <Route exact path="/login" component={Login}/>
+          <Route 
             exact
             path='/'  
-            render={(props) => <Home {...props} signOut={signOut} user={user}/>}
+            render={(props) => <Home {...props} />}
           />
           <Route path='/about' exact component={About} />
           <Route path='/category/:categoryName' exact component={Category}/>

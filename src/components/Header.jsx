@@ -1,44 +1,49 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import logo from '../assets/images/logo.png'
-import './Header.css'
-import { ReactComponent as ShoppingCart } from '../assets/icons/shopping-cart.svg';
-import userEvent from '@testing-library/user-event';
-import { connect } from 'react-redux';
+import React from "react";
+import { Link } from "react-router-dom";
+import logo from "../assets/images/logo.png";
+import "./Header.css";
+import { ReactComponent as ShoppingCart } from "../assets/icons/shopping-cart.svg";
+import userEvent from "@testing-library/user-event";
+import { connect } from "react-redux";
+import { signOut } from "../apis/firebase";
+
+const user = {};
 
 function Header(props) {
   // console.log(props);
-  const {signOut, user, numberOfProducts} = props;
+  const { numberOfProducts } = props;
+
+  function handleHeaderSignOut() {
+    signOut();
+  }
 
   return (
-    
-    <div className='header d-flex justify-content-between align-items-center container'>
-        <Link to='/'>
-          <img src={logo} alt="logo" />
+    <div className="header d-flex justify-content-between align-items-center container">
+      <Link to="/">
+        <img src={logo} alt="logo" />
+      </Link>
+      <div>
+        {user ? (
+          <div>
+            <p>{user.displayName}</p>
+            <button onClick={handleHeaderSignOut}>Delogare</button>
+          </div>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
+        <Link to="/cart">
+          <ShoppingCart className="ml-2" />
         </Link>
-        <div>
-          {
-            user
-                ? <div>
-                  <p>{user.displayName}</p>
-                  <button onClick={signOut}>Delogare</button>
-                  </div>
-                : <Link to='/login'>Login</Link>
-          }
-          <Link to='/cart'>
-            <ShoppingCart className='ml-2'/>
-          </Link>
-          <p>{ numberOfProducts }</p>
-        </div>
-        
+        <p>{numberOfProducts}</p>
+      </div>
     </div>
-  )
+  );
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
   return {
-    numberOfProducts: state.products.length
-  }
+    numberOfProducts: state.products.length,
+  };
 }
 
-export default connect (mapStateToProps)(Header);
+export default connect(mapStateToProps)(Header);
