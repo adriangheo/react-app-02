@@ -4,8 +4,8 @@ function ProductItem(props) {
   const {id, name, price, currency, image} = props;
 
   return (
-    <div>
-        <img src={image} alt="product"/>
+    <div className="col-4">
+        <img src={image} alt="product" className='w-100'/>
         <p>{name}</p>
         <p>{price} {currency}</p>
     </div>

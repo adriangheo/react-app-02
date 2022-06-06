@@ -5,7 +5,8 @@ function ProductList(props) {
   const {products} = props;
 
   return (
-    <div>
+    <div className="container-fluid">
+      <div className="row">
         {
           products
           ? products.map((product) => {
@@ -21,6 +22,7 @@ function ProductList(props) {
           })
           : null  
         }
+      </div>
     </div>
   )
 }
