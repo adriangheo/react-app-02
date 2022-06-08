@@ -5,5 +5,27 @@ const initialState = {
 }
 
 export function userReducer(state=initialState, action){
-    return state;
+    switch(action.type){
+        case 'START_LOADING':
+            return {
+                ...state,
+                loading: true
+            }
+        case 'UPDATE_USER_DATA':
+            return{
+                ...state,
+                data: action.payload ,
+                loading: false
+            }
+        case 'UPDATE_ERROR':
+            return {
+                ...state,
+                data: action.payload,
+                loading: true
+            }
+        default:
+            return state;
+
+    }
 }
+
