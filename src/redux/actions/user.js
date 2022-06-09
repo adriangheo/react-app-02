@@ -1,35 +1,47 @@
-import { signInWithGoogle } from '../../apis/firebase'
+import { signInWithGoogle, signOut } from "../../apis/firebase";
 
-export function startLoading(){
-    return{
-        type: 'START_LOADING' 
-    }
+const startLoading = () => {
+  return {
+    type: "START_LOADING",
+  };
+};
+const updateUserData = (payload) => {
+  return {
+    type: "UPDATE_USER_DATA",
+    payload: payload,
+  };
+};
+const updateUserError = (payload) => {
+  return {
+    type: "UPDATE_USER_ERROR",
+    payload: payload,
+  };
+};
+
+export function loginUser() {
+  return (dispatch) => {
+    dispatch(startLoading());
+
+    signInWithGoogle()
+      .then((userData) => {
+        dispatch(updateUserData(userData.user));
+      })
+      .catch((error) => {
+        dispatch(updateUserError(error));
+      });
+  };
 }
 
-export function updateUserDate(payload){
-    return{
-        type: 'UPDATE_USER_DATA',
-        payload
-    }
-}
+export function logoutUser() {
+  return (dispatch) => {
+    dispatch(startLoading());
 
-export function updateError(payload){
-    return{
-        type: 'UPDATE_ERROR',
-        payload
-    }
-}
-
-export function loginUser(){
-    return (dispatch) => {
-        dispatch(startLoading());
-
-        signInWithGoogle().then((response)=>{
-            const payload = response.user;
-            
-            dispatch(updateUserDate(payload));
-        }).catch((error)=>{
-            dispatch(updateError(error))
-        })
-    }
+    signOut()
+      .then(() => {
+        dispatch(updateUserData(null));
+      })
+      .catch((error) => {
+        dispatch(updateUserError(error));
+      });
+  };
 }

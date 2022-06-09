@@ -3,20 +3,13 @@ import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import "./Header.css";
 import { ReactComponent as ShoppingCart } from "../assets/icons/shopping-cart.svg";
-import userEvent from "@testing-library/user-event";
 import { connect } from "react-redux";
 import { signOut } from "../apis/firebase";
+import { logoutUser } from '../redux/actions/user'
 
 const user = {};
 
 function Header(props) {
-  // console.log(props);
-  const { numberOfProducts } = props;
-
-  function handleHeaderSignOut() {
-    signOut();
-  }
-
   return (
     <div className="header d-flex justify-content-between align-items-center container">
       <Link to="/">
@@ -26,7 +19,7 @@ function Header(props) {
         {user ? (
           <div>
             <p>{user.displayName}</p>
-            <button onClick={handleHeaderSignOut}>Delogare</button>
+            <button onClick={() => props.signOut()}>Delogare</button>
           </div>
         ) : (
           <Link to="/login">Login</Link>
@@ -34,7 +27,7 @@ function Header(props) {
         <Link to="/cart">
           <ShoppingCart className="ml-2" />
         </Link>
-        <p>{numberOfProducts}</p>
+        <p>{props.numberOfProducts}</p>
       </div>
     </div>
   );
@@ -46,4 +39,10 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Header);
+function mapDispatchToProps(dispatch) {
+  return {
+      signOut: () => dispatch(logoutUser())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
